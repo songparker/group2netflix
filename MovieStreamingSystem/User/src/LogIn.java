@@ -1,58 +1,25 @@
 package registerAndLogin;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 /**
- * ClassName: Register
+ * ClassName: LogIn
  * Package: register
  * Description:
  *
  * @Author: Yateng
- * @Create: 2022-12-16 - 11:45 p.m.
+ * @Create: 2022-12-17 - 12:15 a.m.
  * @Version: v1.0
  */
-public class Register {
+public class LogIn {
 
-    public static void Register() {
-        Account myAccount = new Account();
+    public static void Login() {
         Scanner enter = new Scanner(System.in);
-        System.out.println(("Welcome to our Registration system\nEnter your User name please: "));
-        myAccount.setUserName(enter.nextLine());
-
-        System.out.println("Enter your pass word please: ");
-        myAccount.setPassWord(enter.nextLine());
-
-        System.out.println(("Enter your first name please: "));
-        myAccount.setfName(enter.nextLine());
-
-        System.out.println("Enter your last name please: ");
-        myAccount.setlName(enter.nextLine());
-
-        System.out.println(("Enter your date of birth please: "));
-        myAccount.setDateOfBirth(enter.nextLine());
-
-        System.out.println("Enter your gender please: ");
-        myAccount.setGender(enter.nextLine());
-
-        String[] arrAccount = {myAccount.getUserName(), myAccount.getPassWord(), myAccount.getfName(),
-                        myAccount.getlName(), myAccount.getDateOfBirth(), myAccount.getGender()};
-
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Register.txt", true));
-            for (int i = 0; i < arrAccount.length; i++) {
-                writer.append(arrAccount[i] + "\t");
-                if (i == (arrAccount.length - 1)) {
-                    writer.write("\r\n");
-                }
-            }
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         Map<String, Account> accountMap = new HashMap<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("Register.txt"));
@@ -89,6 +56,7 @@ public class Register {
             System.out.println("Check you user name and try again later please!");
             System.exit(0);
         }
+
 
 
     }
