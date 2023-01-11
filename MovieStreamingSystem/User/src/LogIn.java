@@ -1,4 +1,3 @@
-package registerAndLogin;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,7 +21,7 @@ public class LogIn {
         Scanner enter = new Scanner(System.in);
         Map<String, Account> accountMap = new HashMap<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Register.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("MovieStreamingSystem/Register.txt"));
             String line;
             while((line = reader.readLine()) != null){
                 String[] arr = line.split("\t");

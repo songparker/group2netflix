@@ -1,5 +1,3 @@
-package registerAndLogin;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +39,7 @@ public class Register {
                         myAccount.getlName(), myAccount.getDateOfBirth(), myAccount.getGender()};
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Register.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("MovieStreamingSystem/Register.txt", true));
             for (int i = 0; i < arrAccount.length; i++) {
                 writer.append(arrAccount[i] + "\t");
                 if (i == (arrAccount.length - 1)) {

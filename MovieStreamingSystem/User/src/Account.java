@@ -1,4 +1,3 @@
-package registerAndLogin;
 
 /**
  * ClassName: Account

@@ -1,4 +1,3 @@
-package MoviesData;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -16,7 +15,7 @@ import java.util.Scanner;
  */
 public class AddingMovie {
     public static void main(String[] args){
-        Movie newMovie = new Movie();
+        MoviesData.Movie newMovie = new MoviesData.Movie();
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter movie ID please");
         newMovie.setM_Id(Integer.valueOf(scan.nextLine()));
@@ -42,7 +41,7 @@ public class AddingMovie {
                             newMovie.getM_Genre(), newMovie.getM_Country(), newMovie.getM_Language()};
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Register.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("MovieStreamingSystem/movie.txt", true));
             for (int i = 0; i < arrMovie.length; i++) {
                 writer.append(arrMovie[i] + "\t");
                 if (i == (arrMovie.length - 1)) {

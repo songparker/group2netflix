@@ -1,8 +1,5 @@
-import registerAndLogin.LogIn;
-import registerAndLogin.Register;
 
 import java.util.Scanner;
-
 /**
  * ClassName: ${NAME}
  * Package:
