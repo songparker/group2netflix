@@ -1,5 +1,3 @@
-package MoviesData;
-
 import java.util.Objects;
 
 /**
