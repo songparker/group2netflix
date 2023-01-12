@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 /**
  * ClassName: Account
@@ -90,4 +91,16 @@ public class Account {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(userName, account.userName) && Objects.equals(passWord, account.passWord) && Objects.equals(fName, account.fName) && Objects.equals(lName, account.lName) && Objects.equals(dateOfBirth, account.dateOfBirth) && Objects.equals(gender, account.gender);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, passWord, fName, lName, dateOfBirth, gender);
+    }
 }
