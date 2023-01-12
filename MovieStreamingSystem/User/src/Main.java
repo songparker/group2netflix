@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner enter = new Scanner(System.in);
         //invoke user enter a choice
-        System.out.println("Welcome to our NetPlix system\nDo you have an account? Y/N");
+        System.out.println("Welcome to our NetFlix system\nDo you have an account? Y/N");
         //control the while loop in case of mis-matching input
         boolean flag = true;
         while(flag){

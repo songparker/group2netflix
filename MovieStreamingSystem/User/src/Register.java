@@ -19,6 +19,11 @@ public class Register {
         Scanner enter = new Scanner(System.in);
         System.out.println(("Welcome to our Registration system\nEnter your User name please: "));
         myAccount.setUserName(enter.nextLine());
+        if(userIsExisted(myAccount.getUserName())){
+            System.out.println("We are sorry, the user name you just entered in not available, please try another one  and try again\n\n");
+            Register();
+            return;
+        }
 
         System.out.println("Enter your pass word please: ");
         myAccount.setPassWord(enter.nextLine());
@@ -89,5 +94,25 @@ public class Register {
         }
 
 
+    }
+
+    //Check user existed or not before write down into the file
+    public static boolean userIsExisted(String userName){
+
+        Map<String, Account> accountMap = new HashMap<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("MovieStreamingSystem/Register.txt"));
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] arr = line.split("\t");
+               if(arr[0].equalsIgnoreCase(userName)){
+                   return true;
+               }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
