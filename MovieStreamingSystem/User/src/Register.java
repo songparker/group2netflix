@@ -22,6 +22,7 @@ public class Register {
         if(userIsExisted(myAccount.getUserName())){
             System.out.println("We are sorry, the user name you just entered in not available, please try another one  and try again\n\n");
             Register();
+            return;
         }
 
         System.out.println("Enter your pass word please: ");
