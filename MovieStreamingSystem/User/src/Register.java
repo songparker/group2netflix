@@ -1,5 +1,3 @@
-package register;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,14 +13,17 @@ import java.util.Scanner;
  * @Version: v1.0
  */
 public class Register {
-    public static void main(String[] args) {
 
-    }
     public static void Register() {
         Account myAccount = new Account();
         Scanner enter = new Scanner(System.in);
         System.out.println(("Welcome to our Registration system\nEnter your User name please: "));
         myAccount.setUserName(enter.nextLine());
+        if(userIsExisted(myAccount.getUserName())){
+            System.out.println("We are sorry, the user name you just entered in not available, please try another one  and try again\n\n");
+            Register();
+            return;
+        }
 
         System.out.println("Enter your pass word please: ");
         myAccount.setPassWord(enter.nextLine());
@@ -43,7 +44,7 @@ public class Register {
                         myAccount.getlName(), myAccount.getDateOfBirth(), myAccount.getGender()};
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Register.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("MovieStreamingSystem/Register.txt", true));
             for (int i = 0; i < arrAccount.length; i++) {
                 writer.append(arrAccount[i] + "\t");
                 if (i == (arrAccount.length - 1)) {
@@ -57,7 +58,7 @@ public class Register {
 
         Map<String, Account> accountMap = new HashMap<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Register.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("MovieStreamingSystem/Register.txt"));
             String line;
             while((line = reader.readLine()) != null){
                 String[] arr = line.split("\t");
@@ -74,7 +75,7 @@ public class Register {
             e.printStackTrace();
         }
 
-        System.out.println("Welcome to our NetPlix system\nEnter your user name please: ");
+        System.out.println("Welcome to our NetFlix system\nEnter your user name please: ");
         String userName = enter.nextLine();
         System.out.println("Now enter your pass word please: ");
         String pwd = enter.nextLine();
@@ -93,5 +94,25 @@ public class Register {
         }
 
 
+    }
+
+    //Check user existed or not before write down into the file
+    public static boolean userIsExisted(String userName){
+
+        Map<String, Account> accountMap = new HashMap<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("MovieStreamingSystem/Register.txt"));
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] arr = line.split("\t");
+               if(arr[0].equalsIgnoreCase(userName)){
+                   return true;
+               }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

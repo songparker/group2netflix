@@ -1,4 +1,3 @@
-package register;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,14 +16,12 @@ import java.util.Scanner;
  * @Version: v1.0
  */
 public class LogIn {
-    public static void main(String[] args) {
 
-    }
     public static void Login() {
         Scanner enter = new Scanner(System.in);
         Map<String, Account> accountMap = new HashMap<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Register.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("MovieStreamingSystem/Register.txt"));
             String line;
             while((line = reader.readLine()) != null){
                 String[] arr = line.split("\t");
@@ -41,7 +38,7 @@ public class LogIn {
             e.printStackTrace();
         }
 
-        System.out.println("Welcome to our NetPlix system\nEnter your user name please: ");
+        System.out.println("Welcome to our NetFlix system\nEnter your user name please: ");
         String userName = enter.nextLine();
         System.out.println("Now enter your pass word please: ");
         String pwd = enter.nextLine();
