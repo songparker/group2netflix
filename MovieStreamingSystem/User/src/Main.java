@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        Scanner enter = new Scanner(System.in);
+        /*Scanner enter = new Scanner(System.in);
         //invoke user enter a choice
         System.out.println("Welcome to our NetFlix system\nDo you have an account? Y/N");
         //control the while loop in case of mis-matching input
@@ -35,7 +35,12 @@ public class Main {
                     break;
                     }
             }
-        enter.close();
+        enter.close();*/
+
+        SearchingUser.SearchingUser();
+
         }
+
+
 
     }
