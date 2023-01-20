@@ -5,7 +5,13 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner enter = new Scanner(System.in);
-		AddingMovie.AddingMovie();
+		
+		//AddingMovie.AddingMovie();
+		//DeleteMovie.deleteMovie();
+	    EditMovie.editMovie();
+
+		
+		
 	}
 
 }
