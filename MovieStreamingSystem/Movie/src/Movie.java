@@ -136,4 +136,17 @@ public class Movie {
 				"\nM_Country = " + M_Country + 
 				"\nM_Language = " + M_Language + "\n\n";
 	}
+
+	public String toStringInFileFormat() {
+		return M_Id +
+		"\t" + M_Title + 
+				"\t" + M_Director + 
+				"\t" + M_Actors + 
+				"\t" + M_Year + 
+				"\t" + M_Rating + 
+				"\t" + M_Genre + 
+				"\t" + M_Country + 
+				"t" + M_Language;
+	}
+
 }
