@@ -8,7 +8,8 @@ public class Main {
 		
 		//AddingMovie.AddingMovie();
 		//DeleteMovie.deleteMovie();
-	    EditMovie.editMovie();
+	    //EditMovie.editMovie();
+		SearchingMovie.SearchingMovie();
 
 		
 		
