@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,11 +10,31 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class EditMovie {
-	public static void editMovie() {
+	static Scanner scan = new Scanner(System.in);
+	public static void editMovie() throws FileNotFoundException {
 
+		edit();
+		System.out.println("DO you want to delete another one?\n" +
+				"1 - Delete another movie\n" +
+				"2 - Back to Main menu");
+		boolean flag = true;
+		while (flag) {
+			Integer num = Integer.parseInt(scan.nextLine());
+			if(num == 1){
+				editMovie();
+				return;
+			}else{
+				MainAdmin.MainMenu();
+				flag = false;
+			}
+		}
+
+
+	}
+
+	public  static  void edit(){
 		File file = new File("MovieStreamingSystem/Movie.txt");
 		Movie editMovie = new Movie();
-		Scanner scan = new Scanner(System.in);
 		Set<Movie> movieList = new HashSet<>();
 
 		while (true) {
@@ -50,6 +71,7 @@ public class EditMovie {
 				System.exit(0);
 			}
 		}
+
 	}
 
 	// find the movie to be deleted

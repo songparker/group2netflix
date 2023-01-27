@@ -16,6 +16,18 @@ public class SearchingUser {
     //A Scanner constant can be used anywhere in the class
     static Scanner enter = new Scanner(System.in);
     public static void SearchingUser() {
+    	System.out.println("DO you want to add another one?\n" + "1 - Search movie\n" + "2 - Back to Main menu");
+		boolean flag = true;
+		while (flag) {
+			Integer num = Integer.parseInt(enter.nextLine());
+			if (num == 1) {
+				SearchingUser();
+				return;
+			} else {
+				MainUser.MainMenu();
+				flag = false;
+			}
+		}
         while (true) {
             //prompt users to choose one searching option
             System.out.println("Please choose one searching option:");
