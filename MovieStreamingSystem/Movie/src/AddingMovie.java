@@ -98,7 +98,7 @@ public class AddingMovie {
             System.out.println("New Movie was Added Successfully into the System...\n\nMovie Lists:\n");
 
             for(Movie movies : movieList)
-            	System.out.println(movies);
+                System.out.println(movies);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,7 +124,7 @@ public class AddingMovie {
                 movie.setM_Genre(arr[6]);
                 movie.setM_Country(arr[7]);
                 movie.setM_Language(arr[8]);
-                if (newMovie.equals(movie)) {
+                if (movie.getM_Id() == newMovie.getM_Id() || movie.getM_Title().equals(newMovie.getM_Title())) {
                     return true;
                 }
             }
