@@ -54,7 +54,7 @@ public class LogIn {
 			if (foundAccount.getPassWord().equals(pwd)) {
 				System.out.println("Log in success! Your account information is shown below:\n");
 				System.out.println(foundAccount);
-				MainAdmin.MainMenu();
+				MainAdmin.AdminMainMenu();
 			} else {
 				System.out.println("Check you password and try again later please!\n");
 				if (attempts != maxAttempts) {
