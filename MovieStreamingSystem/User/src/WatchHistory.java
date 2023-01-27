@@ -10,7 +10,7 @@ public class WatchHistory {
     private String end_time;
     //watch_time: On the movies' timeline where the user stopped watching
     //I will do a better watch_time, transform from ms to normal time format, so it would be more precise
-    private String watch_time;
+    private long watch_time;
     //finish_or_not: a mark whether the user finish watching the film or not
     //if not, it should be practical for them to continue watching since we got this
     //0 represent no, 1 represent yes
@@ -26,13 +26,13 @@ public class WatchHistory {
         watch_date=null;
         start_time=null;
         end_time=null;
-        watch_time=null;
+        watch_time=0;
         finish_or_not=0;
         feedback=null;
     }
 
     //constructor
-    public WatchHistory(String user_id, String user_name, String movie_id, String movie_name, String watch_date, String start_time, String end_time, String watch_time, int finish_or_not, String feedback) {
+    public WatchHistory(String user_id, String user_name, String movie_id, String movie_name, String watch_date, String start_time, String end_time, long watch_time, int finish_or_not, String feedback) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.movie_id = movie_id;
@@ -102,11 +102,11 @@ public class WatchHistory {
         this.end_time = end_time;
     }
 
-    public String getWatch_time() {
+    public long getWatch_time() {
         return watch_time;
     }
 
-    public void setWatch_time(String watch_time) {
+    public void setWatch_time(long watch_time) {
         this.watch_time = watch_time;
     }
 
@@ -129,6 +129,18 @@ public class WatchHistory {
     @Override
     public int hashCode() {
         return Objects.hash(user_name);
+    }
+
+
+
+    //time exchange
+    public static String timeExchange(long milliseconds)
+    {
+        long hours = ((milliseconds/1000)/60)/60;
+        long minutes = (milliseconds/1000)/60-(hours*60);
+        long seconds = (milliseconds/1000)%60;
+        long ms = milliseconds%1000;
+        return (String.format("%d hours %d Minutes %d Seconds %d Milliseconds",hours,minutes,seconds,ms));
     }
 
     /*
@@ -156,7 +168,7 @@ public class WatchHistory {
                 ", watch_date='" + watch_date + '\'' +
                 ", start_time='" + start_time + '\'' +
                 ", end_time='" + end_time + '\'' +
-                ", watch_time='" + watch_time + '\'' +
+                ", watch_time='" + timeExchange(watch_time) + '\'' +
                 ", finish_or_not=" + finish_or_not +
                 ", feedback='" + feedback + '\'' +
                 '}';
