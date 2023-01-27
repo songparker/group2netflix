@@ -11,7 +11,7 @@ import java.util.Set;
 public class DeleteMovie {
     static Scanner scan = new Scanner(System.in);
 
-    public static void deleteMovie() {
+    public static void deleteMovie() throws FileNotFoundException {
         delete();
         System.out.println("DO you want to delete another one?\n" +
                 "1 - Delete another movie\n" +
@@ -22,10 +22,10 @@ public class DeleteMovie {
             if(num == 1){
                 deleteMovie();
                 return;
-            }else if(num == 2){
-                flag = false;
-            }else{
-                System.out.println("ENter error, please choose 1 OR 2!!");
+            } else if (num == 2) {
+                MainUser.AdminMainMenu();
+            } else {
+            	System.out.println("Invalid Input!Please try again!");
             }
         }
     }
