@@ -6,7 +6,7 @@ public class AddingMovie {
 
     static Scanner scan = new Scanner(System.in);
 
-    public static void AddingMovie() {
+    public static void AddingMovie() throws FileNotFoundException {
         Adding();
         System.out.println("DO you want to add another one?\n" +
                 "1 - Adding another movie\n" +
@@ -17,8 +17,10 @@ public class AddingMovie {
             if (num == 1) {
                 AddingMovie();
                 return;
+            } else if (num == 2) {
+                MainUser.AdminMainMenu();
             } else {
-                flag = false;
+            	System.out.println("Invalid Input!Please try again!");
             }
         }
     }
