@@ -23,10 +23,11 @@ public class EditMovie {
 			if(num == 1){
 				editMovie();
 				return;
-			}else{
-				MainAdmin.AdminMainMenu();
-				flag = false;
-			}
+			} else if (num == 2) {
+                MainUser.AdminMainMenu();
+            } else {
+            	System.out.println("Invalid Input!Please try again!");
+            }
 		}
 
 
