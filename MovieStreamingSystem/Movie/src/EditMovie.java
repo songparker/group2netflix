@@ -24,7 +24,7 @@ public class EditMovie {
 				editMovie();
 				return;
 			}else{
-				MainAdmin.MainMenu();
+				MainAdmin.AdminMainMenu();
 				flag = false;
 			}
 		}
