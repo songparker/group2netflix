@@ -10,7 +10,7 @@ import java.util.Objects;
  * @Version: v1.0
  */
 public class Account {
-    private String userName;
+    private static String userName;
     private String passWord;
     private String fName;
     private String lName;
@@ -31,7 +31,7 @@ public class Account {
 //    Setter and getters
 
 
-    public String getUserName() {
+    public static String getUserName() {
         return userName;
     }
 

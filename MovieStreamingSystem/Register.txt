@@ -1,1 +1,2 @@
-yateng	abc123	yateng	geng	2002-10-1	male	
+yateng	abc123	yateng	geng	2002-10-1	male
+humphrey	777777	humphrey	song	1999-09-01	male

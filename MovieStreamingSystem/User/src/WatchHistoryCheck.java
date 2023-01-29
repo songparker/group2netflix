@@ -139,7 +139,7 @@ public class WatchHistoryCheck {
                 Map<String,Long> movieWatchRank = new LinkedHashMap<>();
                 movieWatchFreq.entrySet().stream()
                         .sorted(Map.Entry.<String,Long>comparingByValue().reversed())
-                        .forEachOrdered(e->movieWatchRank.put(e.getKey(),e.getValue()));
+                        .forEachOrdered(e->movieWatchRank.put("\n"+e.getKey(),e.getValue()));
 
                 System.out.println(movieWatchRank);
             }
