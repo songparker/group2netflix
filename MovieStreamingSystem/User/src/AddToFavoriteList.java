@@ -211,12 +211,11 @@ public class AddToFavoriteList {
                                 e.printStackTrace();
                             }
                         }
+                    else {
+                        System.out.println("This movie is already in your favorite list.");
                     }
-
-                else {
-                    System.out.println("This movie is already in your favorite list.");
-                }
                     break;
+                    }
                 }
                 return;
             }
@@ -254,8 +253,8 @@ public class AddToFavoriteList {
                 {
                     Date date = new Date();
                     SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-                    Account thisUser = new Account();
-                    Class UserInfo = thisUser.getClass();
+                    //Account thisUser = new Account();
+                    //Class UserInfo = thisUser.getClass();
                     FavoriteList myFavorite = new FavoriteList();
                     myFavorite.setUser_name(Account.getUserName());
                     myFavorite.setMovie_id(String.valueOf(searchResult.getM_Id()));
@@ -785,7 +784,7 @@ public class AddToFavoriteList {
             String line;
             while((line = reader.readLine()) != null){
                 String[] arr = line.split("\t");
-                if((arr[1].equals(user_name))&&(arr[3].equalsIgnoreCase(movie_name)))
+                if((arr[0].equals(user_name))&&(arr[2].equalsIgnoreCase(movie_name)))
                 {
                     return true;
                 }
