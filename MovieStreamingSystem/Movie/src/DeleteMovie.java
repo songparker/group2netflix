@@ -9,30 +9,35 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class DeleteMovie {
+    static Scanner scan = new Scanner(System.in);
 
-    public static void deleteMovie() {
-
-        File file = new File("MovieStreamingSystem/Movie.txt");
-        Movie newMovie = new Movie();
-        Scanner scan = new Scanner(System.in);
-        Set<Movie> movieList = new HashSet<>();
-
-        while (true) {
-            System.out.println("Please Enter your choice!\n2-Delete Movie\nany Key-Exit");
-            String choice = scan.nextLine();
-
-            Integer movieToDelete;
-            if (choice.equals("2")) {
-                System.out.println("Enter movie ID to delete ");
-                movieToDelete = Integer.valueOf(scan.nextLine());
-                deleteMovieByMovieId(movieToDelete);
+    public static void deleteMovie() throws FileNotFoundException {
+        delete();
+        System.out.println("DO you want to delete another one?\n" +
+                "1 - Delete another movie\n" +
+                "2 - Back to Main menu");
+        boolean flag = true;
+        while (flag) {
+            Integer num = Integer.parseInt(scan.nextLine());
+            if(num == 1){
+                deleteMovie();
+                return;
+            } else if (num == 2) {
+                MainUser.AdminMainMenu();
             } else {
-                System.out.println("Account Logged out Successfully!");
-                System.exit(0);
+            	System.out.println("Invalid Input!Please try again!");
             }
         }
     }
+    private static  void  delete(){
+        File file = new File("MovieStreamingSystem/Movie.txt");
+        Movie newMovie = new Movie();
+        Set<Movie> movieList = new HashSet<>();
+        System.out.println("Enter movie ID to delete ");
+        Integer movieToDelete = Integer.valueOf(scan.nextLine());
+        deleteMovieByMovieId(movieToDelete);
 
+    }
     // find the movie to be deleted
     private static boolean deleteMovieByMovieId(Integer movieToDelete) {
 
@@ -45,9 +50,10 @@ public class DeleteMovie {
             while ((line = reader.readLine()) != null) {
                 String[] arr = line.split("\t");
                 Integer movieId = Integer.parseInt(arr[0]);
-                System.out.println("Movie id " + movieId);
+//                System.out.println("Movie id " + movieId);
                 if (movieToDelete.equals(movieId)) {
-                    System.out.println("Deleting this movie");
+
+                    System.out.println("Deleting this movie\n" + line);
                     continue;
                 }
                 writerTemp.write(line + System.getProperty("line.separator"));
