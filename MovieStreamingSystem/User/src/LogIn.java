@@ -48,13 +48,13 @@ public class LogIn {
 		System.out.println("Now enter your password please: ");
 		String pwd = enter.nextLine();
 		Account foundAccount = accountMap.get(userName);
-		if ((foundAccount != null) && (foundAccount == accountMap.get("yateng")
-				|| foundAccount == accountMap.get("chester") || foundAccount == accountMap.get("sneha")
-				|| foundAccount == accountMap.get("hua") || foundAccount == accountMap.get("heping"))) {
+		if ((foundAccount != null) && (foundAccount.equals(accountMap.get("yateng"))
+				|| foundAccount.equals(accountMap.get("chester")) || foundAccount.equals(accountMap.get("sneha"))
+				|| foundAccount.equals(accountMap.get("hua")) || foundAccount.equals(accountMap.get("heping")))) {
 			if (foundAccount.getPassWord().equals(pwd)) {
 				System.out.println("Log in success! Your account information is shown below:\n");
 				System.out.println(foundAccount);
-				MainAdmin.AdminMainMenu();
+				MainUser.AdminMainMenu();
 			} else {
 				System.out.println("Check you password and try again later please!\n");
 				if (attempts != maxAttempts) {

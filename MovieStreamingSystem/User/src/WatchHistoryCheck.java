@@ -25,7 +25,7 @@ public class WatchHistoryCheck {
     */
 
 
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void history() throws FileNotFoundException{
         while(true) {
 
             System.out.println("\nWatching history Menu:");
@@ -77,7 +77,7 @@ public class WatchHistoryCheck {
                 String searchByDate = input.nextLine();
                 //Display specific watching history by date
                 System.out.println("\n\nPrint the watch history in "+searchByDate);
-                divideInFileSet.stream().filter(s -> s.getWatch_date().equals(searchByDate)).forEach(System.out::println);
+                divideInFileSet.stream().filter(s -> s.getWatch_date().equals(searchByDate)).forEach(System.out :: println);
             }
 
             if(option.equals("3")) {

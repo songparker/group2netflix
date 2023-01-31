@@ -146,7 +146,7 @@ public class Movie {
 				"\t" + M_Rating + 
 				"\t" + M_Genre + 
 				"\t" + M_Country + 
-				"t" + M_Language;
+				"\t" + M_Language;
 	}
 
 }

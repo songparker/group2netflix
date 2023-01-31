@@ -8,9 +8,7 @@ public class AddingMovie {
 
     public static void AddingMovie() throws FileNotFoundException {
         Adding();
-        System.out.println("DO you want to add another one?\n" +
-                "1 - Adding another movie\n" +
-                "2 - Back to Main menu");
+        System.out.println("DO you want to add another one?\n" + "1 - Adding another movie\n" + "2 - Back to Main menu");
         boolean flag = true;
         while (flag) {
             Integer num = Integer.parseInt(scan.nextLine());
@@ -19,8 +17,10 @@ public class AddingMovie {
                 return;
             } else if (num == 2) {
                 MainUser.AdminMainMenu();
-            } else {
-            	System.out.println("Invalid Input!Please try again!");
+                flag = false;
+            }else {
+                System.out.println("Invalid Input! Please try again!");
+
             }
         }
     }
