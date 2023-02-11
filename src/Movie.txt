@@ -1,0 +1,29 @@
+3	Elephant	Gus Van Sant	Elias McConnell	2003	7.1	Crime	US	EN
+1	Plane	Jean-François Richet	Gerard Butler	2022	6.6	Action	US	EN
+29	Forrest Gump	Robert Zemeckis	Tom Hanks	1994	8.8	Drama Romance	US	EN
+27	The Night Is Short, Walk on Girl	Masaaki Yuasa	Gen Hoshino	2017	7.5	Animation,Adventure,Comedy	Japan	JA
+5	FALL	jadjiejdiefh	xxxxx	xxxxx	9.0	xxx	xxx	xxxx
+24	The Truman Show	Peter Weir	Jim Carrey,Laura Linney	1998	8.2	Comedy,Drame	US	EN
+9	Avatar: The Way of Water	James Cameron	Sam Worthington	2022	7.8	Fantasy	US	EN
+11	atwater montreal brossard	frfs frs frsf f4f	Chow Yun-Fat	2000	7.9	Action	China	ZH
+13	I, Tonya	Craig Gillespie	Margot Rogers	2018	7.4	Biography	US,UK	EN
+18	Triangle of Sadness	Ruben Östlund	Thobias Thorwid	2022	7.5	Comedy,Drama	Sweden,France	EN
+23	The Grand Budapest Hotel	Wes Anderson	Ralph Fiennes	2014	8.1	Adventure,Comedy,Crime	US,Germany	EN,FR,DE
+7	Top Gun: MaverickFFFFFFFF	Joseph Kosinski	Tom Cruise	2022	8.5	Action	US	EN
+14	La La Land	Damien Chazelle	Ryan Gosling, Emma Stone	2016	8.0	Music	US	EN
+20	Kill Bill: Vol. 1	Quentin Tarantino	Uma Thurman	2003	8.2	Action,Crime,Thriller	US	EN
+30	Inception	Christopher Nolan	Leonardo DiCaprio	2010	8.8	Action	US,UK	EN,JA,FN
+21	Coco	Lee Unkrich,Adrian Molina	Anthony Gonzalez	2017	8.4	Animation	US	EN,ES
+4	Avengers: Endgame	Anthony Russo,Joe Russo	Robert Downey Jr.	2019	8.4	Action	US	EN
+25	Get Out	Jordan Peele	Daniel Kaluuya	2017	7.7	Horror	US,Japan	EN
+2	Pan's Labyrinth	Guillermo del Toro	Ivana Baquero	2006	8.2	Fantasy	Mexico&Spain	Spanish
+16	Life Is Beautiful	Roberto Benigni	Roberto Benigni	1997	8.6	Comedy,Drama,War	Italy	IT,DE,EN
+17	Cinema Paradiso	Giuseppe Tornatore	Philippe Noiret	1988	8.5	Drama,Romance	Italy,France	IT
+10	Spirited Away	Hayao Miyazaki	Rumi Hiiragi	2001	8.6	Animation	Japan	EN,JA
+28	Water	Ryan Coogler	Chadwick Boseman	2018	7.3	Action	US	EN
+19	WALL·E	Andrew Stanton	Ben Burtt	2008	8.4	Animation	US	EN
+8	Jurassic World: Dominion	Colin Trevorrow	Chris Pratt	2022	5.6	Action	US	EN
+26	Portrait of a Lady on Fire	Céline Sciamma	Noémie Merlant	2019	8.1	Drama,Romance	France	FN,IT
+12	American Beauty	Sam Mendes	Kevin Spacey	1999	8.4	Drama	US	EN
+22	Before Sunrise	Richard Linklater	Ethan Hawke,Julie Delpy	1995	8.1	Romance	US,Austria	EN
+6	Everything Everywhere All at Once	The Daniels	Michelle Yeoh	2022	8.0	Action	US	EN
