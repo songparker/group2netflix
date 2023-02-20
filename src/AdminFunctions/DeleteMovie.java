@@ -16,7 +16,7 @@ public class DeleteMovie {
 				"Do you want to delete another one?\n" + "1 - Delete another movie\n" + "2 - Back to Main menu");
 		boolean flag = true;
 		while (flag) {
-			String num = scan.nextLine();
+			String num = scan.nextLine().trim();
 			if (num.equals("1")) {
 				deleteMovie();
 				return;
@@ -34,7 +34,7 @@ public class DeleteMovie {
 		while(flag1){
 			System.out.println("Enter movie ID to delete ");
 			try{
-				movieToDelete = Integer.valueOf(scan.nextLine());
+				movieToDelete = Integer.valueOf(scan.nextLine().trim());
 			}catch (Exception e){
 				System.out.println("Input error, you can only enter digits for Rating information!\nStarting over...");
 				delete();
@@ -63,8 +63,8 @@ public class DeleteMovie {
 			}
 			if(movieFound.getM_Id() == movieToDelete){
 				System.out.println("Movie found is\n" + movieFound);
-				System.out.println("Do you want to delete this movie? Y/N");
-				String input = scan.nextLine();
+				System.out.println("Are you sure of you want to delete this movie? Y/N");
+				String input = scan.nextLine().trim();
 				if (input.equalsIgnoreCase("y")) {
 					System.out.println("Movie Deleted Successfully!\n");
 					movieSet.remove(movieFound);
@@ -91,4 +91,5 @@ public class DeleteMovie {
 		}
 		return false;
 	}
+
 }

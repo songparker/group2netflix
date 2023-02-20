@@ -53,14 +53,14 @@ public class LogIn {
 
 		System.out.println("Welcome to our NetPlix system");
 		System.out.println("Enter your username please:");
-		userName = input.nextLine();
+		userName = input.nextLine().trim();
 		System.out.println("Now enter your password please: ");
-		String pwd = input.nextLine();
+		String pwd = input.nextLine().trim();
+		System.out.println();
 		Account foundAccount = accountMap.get(userName);
 		if ((foundAccount != null) && (foundAccount.equals(accountMap.get("yateng"))
 				|| foundAccount.equals(accountMap.get("chester")) || foundAccount.equals(accountMap.get("sneha"))
 				|| foundAccount.equals(accountMap.get("hua")) || foundAccount.equals(accountMap.get("heping")))) {
-
 			String encodedString = Base64.getEncoder().encodeToString(pwd.getBytes());
 //			System.out.println(encodedString);
 			if (foundAccount.getPassWord().equals(encodedString)) {
@@ -69,11 +69,30 @@ public class LogIn {
 				Menus.AdminMenu();
 				//return userName;
 			} else {
-				System.out.println("Check you password and try again later please!\n");
+				System.out.println("Please check your Password and try again!");
 				if (attempts != maxAttempts) {
-					System.out.println(attempts + " out of " + maxAttempts);
+					System.out.println(attempts + " out of " + maxAttempts + "\n");
 					attempts++;
-					checkAccount();
+					while(true) {
+						try {
+							System.out.println("1 - Login\nNo Account yet? Register now!\n2 - Register\n3 - Exit the System");
+							int option = Integer.parseInt(input.nextLine());
+
+							if (option == 1) {
+								checkAccount();
+							} else if (option == 2) {
+								Register.Register();
+								Login();
+							} else if (option == 3) {
+								System.out.println("System is Closed....");
+								System.exit(0);
+							} else {
+								System.out.println("Invalid Input!Please try again!");
+							}
+						} catch (NumberFormatException ex) {
+						System.out.println("Invalid Input!Please try again!");
+					}
+				}
 				} else {
 					System.out.println(attempts + " out of " + maxAttempts);
 					System.out.println("System is Closed....");
@@ -89,11 +108,30 @@ public class LogIn {
 				Menus.UserMenu();
 				//return userName;
 			} else {
-				System.out.println("Check you password and try again later please!\n");
+				System.out.println("Please check your Password and try again!");
 				if (attempts != maxAttempts) {
-					System.out.println(attempts + " out of " + maxAttempts);
+					System.out.println(attempts + " out of " + maxAttempts + "\n");
 					attempts++;
-					checkAccount();
+					while(true) {
+						try {
+							System.out.println("1 - Login\nNo Account yet? Register now!\n2 - Register\n3 - Exit the System");
+							int option = Integer.parseInt(input.nextLine());
+
+							if (option == 1) {
+								checkAccount();
+							} else if (option == 2) {
+								Register.Register();
+								Login();
+							} else if (option == 3) {
+								System.out.println("System is Closed....");
+								System.exit(0);
+							} else {
+								System.out.println("Invalid Input!Please try again!");
+							}
+						} catch (NumberFormatException ex) {
+							System.out.println("Invalid Input!Please try again!");
+						}
+					}
 				} else {
 					System.out.println(attempts + " out of " + maxAttempts);
 					System.out.println("System is Closed....");
@@ -101,11 +139,30 @@ public class LogIn {
 				}
 			}
 		} else {
-			System.out.println("Check you username/password and try again later please!\n");
+			System.out.println("Please check your Username/Password and try again!");
 			if (attempts != maxAttempts) {
-				System.out.println(attempts + " out of " + maxAttempts);
+				System.out.println(attempts + " out of " + maxAttempts + "\n");
 				attempts++;
-				checkAccount();
+				while(true) {
+					try {
+						System.out.println("1 - Login\nNo Account yet? Register now!\n2 - Register\n3 - Exit the System");
+					int option = Integer.parseInt(input.nextLine().trim());
+
+						if (option == 1) {
+							checkAccount();
+						} else if (option == 2) {
+							Register.Register();
+							Login();
+						} else if (option == 3) {
+							System.out.println("System is Closed....");
+							System.exit(0);
+						} else {
+							System.out.println("Invalid Input!Please try again!");
+						}
+					} catch (NumberFormatException ex) {
+						System.out.println("Invalid Input!Please try again!");
+					}
+				}
 			} else {
 				System.out.println(attempts + " out of " + maxAttempts);
 				System.out.println("System is Closed....");

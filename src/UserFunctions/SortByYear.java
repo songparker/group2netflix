@@ -30,20 +30,29 @@ public class SortByYear {
             System.out.println("Movie number " + (i + 1) + "\n" + movieList.get(i));
         }
 
-        System.out.println("Next: \n1- Add one of these movies to favList\n2- Play one of these movies \n3- Back to Main Menu");
-        String command = enter.nextLine();
+        System.out.println("Next: \n1- Add one of these movies to Favoriate List\n2- Play one of these movies \n3- Back to Main Menu");
+        String command = enter.nextLine().trim();
         boolean flag = true;
         while(flag){
             if (command.equals("1")) {
-                System.out.println("Enter the movie title you want add to your Favorite List please");
-                String m_Title = enter.nextLine();
+                System.out.println("Enter the movie number that you want add to your Favorite List please");
                 Movie movieFound = new Movie();
-                for(Movie m: allMovie){
-                    if(m.getM_Title().equalsIgnoreCase(m_Title)){
-                        movieFound = m;
-                        break;
+                boolean flag2 = true;
+                while (flag2) {
+                    try {
+                        int movieNumber = Integer.parseInt(enter.nextLine().trim());
+                        if (movieNumber < 1 || movieNumber > movieList.size()) {
+                            System.out.println("Invalid movie number! Please enter a number between 1 and " + movieList.size());
+                        } else {
+                            movieFound = movieList.get(movieNumber - 1);
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input error! Please enter only digits to choose movie.");
                     }
                 }
+
+
                 if(movieFound.getM_Id() != 0){
                     System.out.println("Movie you chosen is: \n" + movieFound);
                     System.out.println("Added to favList!\n");
@@ -76,17 +85,24 @@ public class SortByYear {
                 }
 
             } else if (command.equals("2")) {
-                System.out.println("Enter the movie title that you want play please");
-                String m_Title = enter.nextLine();
+                System.out.println("Enter the number of movie that you want play please");
                 Movie movieFound = new Movie();
-                for(Movie m: allMovie){
-                    if(m.getM_Title().equalsIgnoreCase(m_Title)){
-                        movieFound = m;
-                        break;
+                boolean flag2 = true;
+                while (flag2) {
+                    try {
+                        int movieNumber = Integer.parseInt(enter.nextLine().trim());
+                        if (movieNumber < 1 || movieNumber > movieList.size()) {
+                            System.out.println("Invalid movie number! Please enter a number between 1 and " + movieList.size());
+                        } else {
+                            movieFound = movieList.get(movieNumber - 1);
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input error! Please enter only digits to choose movie.");
                     }
                 }
                 if(movieFound.getM_Id() != 0){
-                    System.out.println("Start playing movie: " + movieFound.getM_Title() + "\nYou can user \"space\" + \"Enter\" to pause and resume anytime" +
+                    System.out.println("Start playing movie: " + movieFound.getM_Title() + "\nYou can user \"space\" then \"Enter\" to pause and resume anytime" +
                             "\nOr \"S\" + \"Enter\" to stop playing");
                     try {
                         MoviePlaying.play(movieFound);
@@ -112,58 +128,5 @@ public class SortByYear {
                 }
             }
         }
-//        System.out.println("Choose a movie by movie number please: ");
-//        Integer num = Integer.parseInt(enter.nextLine());
-//        Movie m = movieList.get(num - 1);
-//        System.out.println("Movie you choosen is: \n" + m);
-//
-//        System.out.println("Next: \n1- Add this movie to favList\n2- Play this movie\n3- Back to Main Menu");
-//        String str = enter.nextLine();
-//        switch (str){
-//            case "1":
-//                System.out.println("Added to favList!");
-//                try {
-//                    AddToFavoritList.addToFav(m);
-//                } catch (Exception e) {
-//                    throw new RuntimeException(e);
-//                }
-//                System.out.println("DO you want to add another one?\n" + "1 - Adding another movie\n" + "2 - Back to Main menu");
-//                boolean flag = true;
-//                while (flag) {
-//                    String number = enter.nextLine();
-//                    if (number.equals("1")) {
-//                        sortByYear( );
-//                        return;
-//                    } else if (number.equals("2")) {
-//                        try {
-//                            Menus.UserMenu();
-//                        } catch (Exception e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                        flag = false;
-//                    } else {
-//                        System.out.println("Invalid Input! Please try again!");
-//                    }
-//                }
-//                break;
-//            case "2":
-//                MoviePlaying.play(m);
-//                break;
-//            case "3":
-//                try {
-//                    Menus.UserMenu();
-//                } catch (Exception e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
-//            default:
-//                System.out.println("Input error, backing to main menu");
-//                try {
-//                    Menus.UserMenu();
-//                } catch (Exception e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
-//        }
     }
 }

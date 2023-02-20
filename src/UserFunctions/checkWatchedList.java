@@ -46,7 +46,7 @@ public class checkWatchedList {
         boolean flag = true;
         while(flag){
             System.out.println("\nYou can play anyone of them by enter the movie name or enter N back to main menu: ");
-            String str = scan.nextLine();
+            String str = scan.nextLine().toLowerCase().trim();
             if(str.equalsIgnoreCase("n")){
                 Menus.UserMenu();
                 flag = false;
@@ -54,11 +54,11 @@ public class checkWatchedList {
             Movie movieInList = null;
             for(String histories: userRecordsList) {
                 String[] arr = histories.split("\t");
-                if(str.equalsIgnoreCase(arr[3])){
-                    System.out.println("Start playing movie: " + arr[3] + "\nYou can user \"space\" + \"Enter\" to pause and resume anytime" +
+                if(arr[3].toLowerCase().contains(str)){
+                    System.out.println("Start playing movie: " + arr[3] + "\nYou can user \"space\" then \"Enter\" to pause and resume anytime" +
                                         "\nOr \"S\" + \"Enter\" to stop playing");
                     for(Movie m: allMovie){
-                        if(str.equalsIgnoreCase(m.getM_Title())){
+                        if(m.getM_Title().toLowerCase().contains(str)){
                             movieInList = m;
                         }
                     }
@@ -83,8 +83,5 @@ public class checkWatchedList {
             }
 
         }
-
-
-
     }
 }

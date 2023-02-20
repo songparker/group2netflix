@@ -4,7 +4,6 @@ import Entities.Account;
 import Entities.Movie;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 

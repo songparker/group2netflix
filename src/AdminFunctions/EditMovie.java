@@ -9,6 +9,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class EditMovie {
+	private static final String movieTitleRegex = "^[\\p{L}\\p{N}\\p{P}\\s&&[^\\p{So}]]{2,}[!~@#\\$%\\^&\\*\\(\\)_\\+\\{\\}\\|\":<>\\?\\[\\]\\\\';,./]*$";
+	private static final String yearRegex = "^(19|20)\\d{2}$";
+	private static final String languageRegex = "^[a-zA-Z]{2,}$";
+
+
 	public static void editMovie() throws FileNotFoundException {
 		Movie editMovie = new Movie();
 		Scanner scan = new Scanner(System.in);
@@ -19,7 +24,7 @@ public class EditMovie {
 			while (flag) {
 				try {
 					System.out.println("Enter movie ID to edit ");
-					String temp = scan.nextLine();
+					String temp = scan.nextLine().trim();
 					movieToEdit = Integer.valueOf(temp);
 				} catch (NumberFormatException nex) {
 					System.out.println("input error, you can enter only digits for Movie ID!\nStarting over...");				
@@ -45,29 +50,76 @@ public class EditMovie {
 						+ "5-Edit Rating\n" + "6-Edit Genre\n" + "7-Edit Country\n" + "8-Edit Language\n"
 						+ "9-Exit editing\n");
 				String field = "";
-				String option = scan.nextLine();
+				String option = scan.nextLine().trim();
 				switch (option) {
 				case "1":
-					System.out.println("Enter the title of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new title of this movie please");
+					field = scan.nextLine().trim();
+//					while (!field.matches(movieTitleRegex)) {
+//						System.out.println("Invalid movie title, please try again(Minimum 2 characters)!");
+//						System.out.println("Enter the movie Title please: ");
+//						field = scan.nextLine().trim();
+//					}
+					boolean titleExists = false;
+					for (Movie movie : allMovie) {
+						if (movie.getM_Title().equalsIgnoreCase(field)) {
+							titleExists = true;
+							break;
+						}
+					}
+
+					while (!field.matches(movieTitleRegex) || titleExists) {
+						if (!field.matches(movieTitleRegex)) {
+							System.out.println("Invalid movie title, please try again (Minimum 2 characters)!");
+						} else {
+							System.out.println("Movie title already exists, please enter a different title!");
+						}
+						System.out.println("Enter the movie Title please: ");
+						field = scan.nextLine().trim();
+
+						titleExists = false;
+						for (Movie movie : allMovie) {
+							if (movie.getM_Title().equalsIgnoreCase(field)) {
+								titleExists = true;
+								break;
+							}
+						}
+					}
 					editTitle(movieToEdit, field);
 					afterEdit();
 					break;
 				case "2":
-					System.out.println("Enter the director of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new director information of this movie please");
+					field = scan.nextLine().trim();
+					while (!field.matches(movieTitleRegex)) {
+						System.out.println("Invalid movie Director, please try again(Minimum 2 characters)!");
+						System.out.println("Enter the movie Director please: ");
+						field = scan.nextLine().trim();
+					}
 					editDirector(movieToEdit, field);
 					afterEdit();
 					break;
 				case "3":
-					System.out.println("Enter the actor of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new actor information of this movie please");
+					field = scan.nextLine().trim();
+					while (!field.matches(movieTitleRegex)) {
+						System.out.println("Invalid movie Actor information, please try again(Minimum 2 characters)!");
+						System.out.println("Enter the movie Actor please: ");
+						field = scan.nextLine().trim();
+					}
 					editActor(movieToEdit, field);
 					afterEdit();
 					break;
 				case "4":
-					System.out.println("Enter the year of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new released year of this movie please");
+					field = scan.nextLine().trim();
+
+					while (!field.matches(yearRegex)) {
+						System.out.println("Invalid movie Year of produced information, please try again(Digits only YYYY, Range: 1900 - 2099)!");
+						System.out.println("Enter the movie Year of produced please: ");
+						field = scan.nextLine().trim();
+					}
+
 					editYear(movieToEdit, field);
 					afterEdit();
 					break;
@@ -76,8 +128,8 @@ public class EditMovie {
 					boolean flag1 = true;
 					while (flag1) {
 						try {
-							System.out.println("Enter the rating of the movie please");
-							newRating = Double.parseDouble(scan.nextLine());
+							System.out.println("Enter the new rating of this movie please");
+							newRating = Double.parseDouble(scan.nextLine().trim());
 							flag1 = false;
 
 						} catch (Exception e) {
@@ -92,20 +144,50 @@ public class EditMovie {
 						afterEdit();
 					break;
 				case "6":
-					System.out.println("Enter the genre of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new genre of this movie please");
+					field = scan.nextLine().trim();
+					while (!field.matches(movieTitleRegex)) {
+						System.out.println("Invalid movie Genre information, please try again(Minimum 2 characters)!");
+						System.out.println("Enter the movie Genre please: ");
+						field = scan.nextLine().trim();
+					}
 					editGenre(movieToEdit, field);
 					afterEdit();
 					break;
 				case "7":
-					System.out.println("Enter the country of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new produced country of this movie please");
+					field = scan.nextLine().trim();
+					while (!field.matches(movieTitleRegex)) {
+						System.out.println("Invalid movie Country information, please try again(Minimum 2 characters)!");
+						System.out.println("Enter the movie Country please: ");
+						field = scan.nextLine().trim();
+					}
 					editCountry(movieToEdit, field);
 					afterEdit();
 					break;
 				case "8":
-					System.out.println("Enter the language of the movie please");
-					field = scan.nextLine();
+					System.out.println("Enter the new language information of this movie please");
+					field = scan.nextLine().trim();
+
+					while (!field.matches(languageRegex)) {
+						System.out.println("Invalid language, letters only! (No digits and special characters):");
+						field = scan.nextLine().trim();
+					}
+					if (field.equalsIgnoreCase("english")) {
+						field = "EN";
+					} else if (field.equalsIgnoreCase("japanese")) {
+						field = "JA";
+					}else if (field.equalsIgnoreCase("french") || field.equalsIgnoreCase("francais")) {
+						field = "FR";
+					}else if (field.equalsIgnoreCase("german") || field.equalsIgnoreCase("germany")) {
+						field = "DE";
+					}else if (field.equalsIgnoreCase("Spanish")) {
+						field = "ES";
+					}else if (field.equalsIgnoreCase("Chinese")) {
+						field = "ZH";
+					}else if (field.equalsIgnoreCase("Italy") || field.equalsIgnoreCase("italian")) {
+						field = "IT";
+					}
 					editLanguage(movieToEdit, field);
 					afterEdit();
 					break;
@@ -150,7 +232,7 @@ public class EditMovie {
 		while (true) {
 			System.out.println("Would you like to continue editing?\n1-Continue editing\n2-Back to main menu\n");
 			Scanner scan = new Scanner(System.in);
-			String command = scan.nextLine();
+			String command = scan.nextLine().trim();
 			switch (command) {
 			case "1":
 				editMovie();
@@ -196,7 +278,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -236,7 +317,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -276,7 +356,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -355,7 +434,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -395,8 +473,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -435,8 +511,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -475,8 +549,6 @@ public class EditMovie {
 			reader.close();
 
 			moveFileToOriginalFile();
-			// exitToMain();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

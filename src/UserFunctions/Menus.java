@@ -20,7 +20,7 @@ public class Menus {
 		System.out.println("1- Edit your Account Information\n" + "2- Search Movie\n" + "3- Sort Movies By Rating\n"
 				+ "4- Sort Movies By Released Year\n" + "5- Check your Favorite List\n"
 				+ "6- Watch History\n" + "7- Exit the System");
-		String option = enter.nextLine();
+		String option = enter.nextLine().trim();
 		switch (option) {
 		case "1":
 			EditUserInfo.editUserInfo();
@@ -56,7 +56,7 @@ public class Menus {
 		System.out.println("Please choose the option you want to do from the shown list:");
 		System.out.println("1- Adding Movie\n" + "2- Delete Movie\n" + "3- Edit Movie\n" + "4- Search Movie\n"
 				+ "5- Search User\n" + "6- Check watching history data\n" + "7- Exit the System");
-		String option = enter.nextLine();
+		String option = enter.nextLine().trim();
 		switch (option) {
 		case "1":
 			try {

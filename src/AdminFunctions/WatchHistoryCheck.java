@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 
 public class WatchHistoryCheck {
+    private static final String movieTitleRegex = "^[\\p{L}\\p{N}\\p{P}\\s&&[^\\p{So}]]{2,}[!~@#\\$%\\^&\\*\\(\\)_\\+\\{\\}\\|\":<>\\?\\[\\]\\\\';,./]*$";
 
 
     public static void watchHistoryMenu() {
@@ -25,7 +26,6 @@ public class WatchHistoryCheck {
             System.out.println("\nWatching history Menu:");
             watchHistoryMenu();
             System.out.println();
-
             Scanner inFile = new Scanner(new FileReader("src/watchHistory.txt"));
 
             Set<WatchHistory> divideInFileSet = new HashSet<WatchHistory>();
@@ -47,7 +47,6 @@ public class WatchHistoryCheck {
                 historyObj.setStart_time(lastWatch[5]);
                 historyObj.setEnd_time(lastWatch[6]);
                 historyObj.setWatch_time(lastWatch[7]);
-                //historyObj.setFinish_or_not(Integer.parseInt(lastWatch[8]));
                 historyObj.setFeedback(lastWatch[8]);
 
                 divideInFileSet.add(historyObj);
@@ -56,121 +55,104 @@ public class WatchHistoryCheck {
             Scanner input = new Scanner(System.in);
 
             System.out.println("Please enter the option number.");
-            String option = input.nextLine();
+            String option = input.nextLine().trim();
 
 
             if (option.equals("1")) {
-                System.out.println("\n1. Check all watching history sorted by record_id"+
-                        "\n2. Check watching history by date"+
-                        "\n3. Check watching history by user name"+
-                        "\n4. Check watching history by movie ID"+
-                        "\n5. Check watching history by movie name"+
-                        "\n6. Return to Previous Menu");
-                String subOption = input.nextLine();
-                if (subOption.equals("1")) {
-                    //Display Movie watching history in the HashSet sorted by record_id
-                    System.out.println("\n\nPrint all watch history sorted by record_id");
-                    divideInFileSet.stream().sorted(Comparator.comparing(WatchHistory::getRecord_id)).forEach(System.out::println);
-                }
-                else if(subOption.equals("2")) {
-                    boolean flag = true;
-                    while(flag){
-                        System.out.println("\nPlease enter the date you want to search.");
-                        String searchByDate = input.nextLine();
-                        if (divideInFileSet.stream().filter(s -> s.getWatch_date().equals(searchByDate)).findAny().isEmpty())
-                        {
-                            System.out.println("We don't have any records for this date. Please try again");
+                while (true) {
+                    System.out.println("\n1. Check all watching history sorted by record_id" +
+                            "\n2. Check watching history by date(YYYY-MM-DD)" +
+                            "\n3. Check watching history by user name" +
+                            "\n4. Check watching history by movie ID" +
+                            "\n5. Check watching history by movie name" +
+                            "\n6. Return to Previous Menu");
+                    String subOption = input.nextLine().trim();
+                    if (subOption.equals("1")) {
+                        //Display Movie watching history in the HashSet sorted by record_id
+                        System.out.println("\n\nPrint all watch history sorted by record_id");
+                        divideInFileSet.stream().sorted(Comparator.comparing(WatchHistory::getRecord_id)).forEach(System.out::println);
+                    } else if (subOption.equals("2")) {
+                        boolean flag = true;
+                        System.out.println("\nPlease enter the date you want to search with the date format of YYYY-MM-DD.");
+                        while (flag) {
+
+                            String searchByDate = input.nextLine().trim();
+                            if (searchByDate.equalsIgnoreCase("N")) {
+                                flag = false;
+                            }
+                            else if (divideInFileSet.stream().filter(s -> s.getWatch_date().equals(searchByDate)).findAny().isEmpty()) {
+                                System.out.println("We don't have any records for this date. Please try again or input 'N' to return to previous menu.");
+                            }
+                            else {
+                                System.out.println("\nHere is the watch history in " + searchByDate);
+                                divideInFileSet.stream().filter(s -> s.getWatch_date().equals(searchByDate)).forEach(System.out::println);
+                                flag = false;
+                            }
                         }
-                        else{
-                            System.out.println("\nHere is the watch history in "+searchByDate);
-                            divideInFileSet.stream().filter(s -> s.getWatch_date().equals(searchByDate)).forEach(System.out::println);
-                            flag = false;
-                        }
-                    }
-                }
-
-
-                else if(subOption.equals("3")) {
-//                    System.out.println("\nPlease enter the user name you want to search.");
-//                    String searchByUName = input.nextLine();
-                    //Display specific user's watching history
-//                    System.out.println("\n\nPrint the watch history by "+searchByUName);
-//                    divideInFileSet.stream().filter(s -> s.getUser_name().equals(searchByUName)).forEach(System.out::println);
-
-                    boolean flag = true;
-                    while(flag){
+                    } else if (subOption.equals("3")) {
+                        boolean flag = true;
                         System.out.println("\nPlease enter the user name you want to search.");
-                        String searchByUName = input.nextLine();
-                        if (divideInFileSet.stream().filter(s -> s.getUser_name().equals(searchByUName)).findAny().isEmpty())
-                        {
-                            System.out.println("We don't have any records for this user. Please check your input and try again");
+                        while (flag) {
+
+                            String searchByUName = input.nextLine().trim();
+                            if (searchByUName.equalsIgnoreCase("N")) {
+                                flag = false;
+                            }
+                            else if (divideInFileSet.stream().filter(s -> s.getUser_name().equals(searchByUName)).findAny().isEmpty()) {
+                                System.out.println("We don't have any records for this user. Please check your input and try again or input 'N' to return to previous menu.");
+                            } else {
+                                System.out.println("\nHere is the watch history of " + searchByUName);
+                                divideInFileSet.stream().filter(s -> s.getUser_name().equals(searchByUName)).forEach(System.out::println);
+                                flag = false;
+                            }
                         }
-                        else{
-                            System.out.println("\nHere is the watch history of "+searchByUName);
-                            divideInFileSet.stream().filter(s -> s.getUser_name().equals(searchByUName)).forEach(System.out::println);
-                            flag = false;
-                        }
-                    }
 
-                }
-
-                else if(subOption.equals("4")) {
-                    //System.out.println("\nPlease enter the movie ID you want to search.");
-                   // String searchByMID = input.nextLine();
-                    //Display specific movie's watching history
-//                    System.out.println("\n\nPrint the watch history by "+searchByMID);
-//                    divideInFileSet.stream().filter(s -> s.getMovie_id().equals(searchByMID)).forEach(System.out::println);
-
-                    boolean flag = true;
-                    while(flag){
+                    } else if (subOption.equals("4")) {
+                        boolean flag = true;
                         System.out.println("\nPlease enter the movie ID you want to search.");
-                        String searchByMID = input.nextLine();
-                        if (divideInFileSet.stream().filter(s -> s.getMovie_id().equals(searchByMID)).findAny().isEmpty())
-                        {
-                            System.out.println("We don't have any records for this movie ID. Please check your input and try again");
-                        }
-                        else{
-                            System.out.println("\nHere is the watch history with the movie ID: "+searchByMID);
-                            divideInFileSet.stream().filter(s -> s.getMovie_id().equals(searchByMID)).forEach(System.out::println);
-                            flag = false;
-                        }
-                    }
-                }
+                        while (flag) {
 
-                else if(subOption.equals("5")) {
-//                    System.out.println("\n\nPlease enter the movie name you want to search.");
-//                    String searchByMName = input.nextLine();
-                    //Display specific movie's watching history
-//                    System.out.println("\n\nPrint the watch history by "+searchByMName);
-//                    divideInFileSet.stream().filter(s -> s.getMovie_name().equalsIgnoreCase(searchByMName)).forEach(System.out::println);
-
-                    boolean flag = true;
-                    while(flag){
+                            String searchByMID = input.nextLine().trim();
+                            if (searchByMID.equalsIgnoreCase("N")) {
+                                flag = false;
+                            }
+                            else if (divideInFileSet.stream().filter(s -> s.getMovie_id().equals(searchByMID)).findAny().isEmpty()) {
+                                System.out.println("We don't have any records for this movie ID. Please check your input and try again or input 'N' to return to previous menu.");
+                            } else {
+                                System.out.println("\nHere is the watch history with the movie ID: " + searchByMID);
+                                divideInFileSet.stream().filter(s -> s.getMovie_id().equals(searchByMID)).forEach(System.out::println);
+                                flag = false;
+                            }
+                        }
+                    } else if (subOption.equals("5")) {
+                        boolean flag = true;
                         System.out.println("\n\nPlease enter the movie name you want to search.");
-                        String searchByMName = input.nextLine();
-                        if (divideInFileSet.stream().filter(s -> s.getMovie_name().equalsIgnoreCase(searchByMName)).findAny().isEmpty())
-                        {
-                            System.out.println("We don't have any records for movie. Please check your input and try again");
+                        while (flag) {
+
+                            String searchByMName = input.nextLine().trim();
+                            if (searchByMName.equalsIgnoreCase("N")) {
+                                flag = false;
+                            }
+                            else if (divideInFileSet.stream().filter(s -> s.getMovie_name().equalsIgnoreCase(searchByMName)).findAny().isEmpty()) {
+                                System.out.println("We don't have any records for movie. Please check your input and try again or input 'N' to return to previous menu.");
+                            } else {
+                                System.out.println("\nHere is the watch history of movie : " + searchByMName);
+                                divideInFileSet.stream().filter(s -> s.getMovie_name().equalsIgnoreCase(searchByMName)).forEach(System.out::println);
+                                flag = false;
+                            }
                         }
-                        else{
-                            System.out.println("\nHere is the watch history of movie : "+searchByMName);
-                            divideInFileSet.stream().filter(s -> s.getMovie_name().equalsIgnoreCase(searchByMName)).forEach(System.out::println);
-                            flag = false;
+
+                    } else if (subOption.equals("6")) {
+                        try {
+                            WatchHistoryCheck();
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
                         }
+                        break;
+                    } else {
+                        System.out.println("Please only input valid options from 1 to 6.");
                     }
-
                 }
-
-                else if(subOption.equals("6")) {
-                    try {
-                        WatchHistoryCheck();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                    break;
-                }
-
-                else {System.out.println("Please only input valid options from 1 to 6.");}
             }
 
             else if(option.equals("2")) {
@@ -183,8 +165,6 @@ public class WatchHistoryCheck {
                 movieWatchFreq.entrySet().stream()
                         .sorted(Map.Entry.<String,Long>comparingByValue().reversed())
                         .forEachOrdered(e->movieWatchRank.put("\n"+e.getKey(),e.getValue()));
-
-                //System.out.println(movieWatchRank);
 
                 Set<Map.Entry<String,Long>> mapEntries = movieWatchRank.entrySet();
                 List<Map.Entry<String,Long>> result = new LinkedList<>(mapEntries);
@@ -218,7 +198,6 @@ public class WatchHistoryCheck {
                         .sorted(Map.Entry.<String,Double>comparingByValue().reversed())
                         .forEachOrdered(e->FeedbackRank.put("\n"+e.getKey(),e.getValue()));
 
-                //System.out.println(FeedbackRank);
 
                 Set<Map.Entry<String,Double>> mapEntries1 = FeedbackRank.entrySet();
                 List<Map.Entry<String,Double>> result1 = new LinkedList<>(mapEntries1);

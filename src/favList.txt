@@ -1,12 +1,13 @@
-xxx	Movie: NAYA	Release Year: 2009	Rating: 9.8	Genre: action
-xxx	Movie: 76765	Release Year: 5634	Rating: 654.0	Genre: 76
-lichen	Movie: 76765	Release Year: 5634	Rating: 654.0	Genre: 76
-xxx	Movie: xxx	Release Year: xxx	Rating: 10.0	Genre: xxx
-eska	Movie: 76765	Release Year: 5634	Rating: 654.0	Genre: 76
-eska1	Movie: NAYA	Release Year: 2009	Rating: 9.8	Genre: action
-eska1	Movie: xxx	Release Year: xxx	Rating: 10.0	Genre: xxx
-yatengUser	Movie: 76765	Release Year: 5634	Rating: 654.0	Genre: 76
-yatengUser	Movie: Fall	Release Year: 2022	Rating: 6.4	Genre: 
 yatengUser	Movie: Avatar: The Way of Water	Release Year: 2022	Rating: 7.8	Genre: Fantasy
 yatengUser	Movie: Jurassic World: Dominion	Release Year: 2022	Rating: 5.6	Genre: Action
 yatengUser	Movie: Spirited Away	Release Year: 2001	Rating: 8.6	Genre: Animation
+yatengUser	Movie: Fall	Release Year: 2022	Rating: 6.4	Genre: Thriller
+yatengUser	Movie: Before Sunrise	Release Year: 1995	Rating: 8.1	Genre: Romance
+test	Movie: Jurassic World: Dominion	Release Year: 2022	Rating: 5.6	Genre: Action
+test	Movie: Life Is Beautiful	Release Year: 1997	Rating: 8.6	Genre: Comedy,Drama,War
+test	Movie: Forrest Gump	Release Year: 1994	Rating: 8.8	Genre: Drama Romance
+test	Movie: Fall	Release Year: 2022	Rating: 6.4	Genre: Thriller
+test	Movie: Avatar: The Way of Water	Release Year: 2022	Rating: 7.8	Genre: Fantasy
+test	Movie: Plane	Release Year: 2022	Rating: 6.6	Genre: Action
+test	Movie: Inception	Release Year: 2010	Rating: 8.8	Genre: Action
+test	Movie: Coco	Release Year: 2017	Rating: 8.4	Genre: Animation
