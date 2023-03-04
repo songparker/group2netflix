@@ -1,4 +1,4 @@
-# group2netflix
+# group2netPlix
 ## We could add the functions we wanna do and who wanna do it here:
 
 ## Functions:
